@@ -1,0 +1,9 @@
+<h1> List Of Campgrounds in Chennai</h1>
+
+<% campgrounds.forEach(function(campground){ %>
+<div> 
+<%= campground.name %>
+<img src="<%=campground.image %>">
+</div>
+    
+<% }) %>
