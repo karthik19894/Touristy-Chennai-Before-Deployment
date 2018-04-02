@@ -1,12 +1,19 @@
 var express=require("express");
 var app=express();
 var bodyParser=require('body-parser');
+var mongoose=require('mongoose');
 
 app.use(bodyParser.urlencoded({extended:true}));
 
-var campgrounds=[{name: "Marina",image:"https://c1.staticflickr.com/5/4040/4240277582_5c788b0934_z.jpg" },
-{name: "Semmozhi Poongah", image:"https://www.makemytrip.com/travel-guide/media/dg_image/mumbai/Joggers-Park_Mumbai.jpg"},
-{name:"Mahabalipuram",image:"https://a.travel-assets.com/findyours-php/viewfinder/images/res60/68000/68500-New-Town-Eco-Park.jpg"}];
+mongoose.connect("mongodb://localhost/touristychennai");
+
+var campgroundSchema=new mongoose.Schema({
+    name:String,
+    image:String
+});
+
+var Campground=mongoose.model("Campground",campgroundSchema);
+
 
 app.set("view engine","ejs");
 
@@ -17,15 +24,35 @@ app.get('/',function(req,res){
 
 
 app.get('/campgrounds',function(req,res){
-    res.render('campgrounds',{campgrounds:campgrounds});
+    Campground.find({},function(err,campgrounds){
+    if(err){
+        console.log("Error in fetching Camp grounds");
+    }
+    else
+    {
+        res.render('campgrounds',{campgrounds:campgrounds});
+    }
+    
+})
 });
+
 
 app.post('/campgrounds',function(req,res){
     var name=req.body.name;
     var image=req.body.image;
     var campground={name:name,image:image};
-    campgrounds.push(campground);
-    res.redirect('campgrounds')
+    Campground.create(campground,function(err,campground)
+    {
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            console.log("campground created successfully");
+            res.redirect('campgrounds');
+        }
+    });
+    
     
 });
 
