@@ -22,25 +22,25 @@ app.get('/',function(req,res){
     res.render("landing");
 });
 
-Campground.create({name:"Bessy Beach",image:"https://media.gettyimages.com/photos/good-morning-chennai-picture-id169401579",description:"An awesome beach located in one of the Calmest Places in Chennai "},function(err,place){
-    if(err){
-        console.log(err)
-    }
-    else
-    {
-        console.log("Place Created Successfully");
-    }
-});
+// Campground.create({name:"Bessy Beach",image:"https://media.gettyimages.com/photos/good-morning-chennai-picture-id169401579",description:"An awesome beach located in one of the Calmest Places in Chennai "},function(err,place){
+//     if(err){
+//         console.log(err)
+//     }
+//     else
+//     {
+//         console.log("Place Created Successfully");
+//     }
+// });
 
-Campground.create({name:"Marina Beach",image:"https://media.gettyimages.com/photos/marina-beach-picture-id169352317",description:"No words to Say and the 2nd longest beach in the World "},function(err,place){
-    if(err){
-        console.log(err)
-    }
-    else
-    {
-        console.log("Place Created Successfully");
-    }
-});
+// Campground.create({name:"Marina Beach",image:"https://media.gettyimages.com/photos/marina-beach-picture-id169352317",description:"No words to Say and the 2nd longest beach in the World "},function(err,place){
+//     if(err){
+//         console.log(err)
+//     }
+//     else
+//     {
+//         console.log("Place Created Successfully");
+//     }
+// });
 
 app.get('/campgrounds',function(req,res){
     Campground.find({},function(err,campgrounds){
@@ -49,7 +49,7 @@ app.get('/campgrounds',function(req,res){
     }
     else
     {
-        res.render('campgrounds',{campgrounds:campgrounds});
+        res.render('index',{campgrounds:campgrounds});
     }
     
 })
@@ -69,7 +69,7 @@ app.post('/campgrounds',function(req,res){
         else
         {
             console.log("campground created successfully");
-            res.redirect('campgrounds');
+            res.redirect('index');
         }
     });
     
