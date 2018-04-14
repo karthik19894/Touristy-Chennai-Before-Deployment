@@ -93,7 +93,7 @@ router.delete('/:id/delete',checkCampgroundOwnership,function(req,res){
 });
 
 function checkCampgroundOwnership(req,res,next){
-    if(req.user.isAuthenticated())
+    if(req.isAuthenticated())
     {
         Campground.findById(req.params.id,function(err,foundCampground){
             if(err){
@@ -112,6 +112,9 @@ function checkCampgroundOwnership(req,res,next){
      
     });
     
+}
+else{
+    res.redirect('back');
 }
 }
 
