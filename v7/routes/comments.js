@@ -1,5 +1,5 @@
 var express=require('express'),
-router=express.router({mergeParams:true}),
+router=express.Router({mergeParams:true}),
 Campground=require('../models/campground'),
 Comment=require('../models/comment');
 
@@ -46,3 +46,5 @@ function isLoggedIn(req,res,next){
         res.redirect('/login');
     }
 }
+
+module.exports = router;

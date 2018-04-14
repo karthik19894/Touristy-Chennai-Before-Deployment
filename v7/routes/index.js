@@ -1,5 +1,5 @@
 var express=require('express'),
-router=express.router(),
+router=express.Router(),
 Campground=require('../models/campground'),
 User=require('../models/user'),
 passport=require('passport');
@@ -64,3 +64,5 @@ function isLoggedIn(req,res,next){
         res.redirect('/login');
     }
 }
+
+module.exports = router;
