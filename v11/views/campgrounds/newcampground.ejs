@@ -1,14 +1,14 @@
 <% include ../partials/header %>
 
-
-
-<div class="container">
     <h1 style="text-align:center;"> Add a New Must Visit Place</h1>
     <div class="row">
         <div style="width:30%; margin:30px auto;">
             <form action='/campgrounds' method="post">
                 <div class="form-group">
                     <input class="form-control" type="text" name="name" placeholder="Name of Campground">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="price" placeholder="Price in Rupees" min="1.0" step="1.0">
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" name="image" placeholder="Image URL">
@@ -23,7 +23,6 @@
             <a href="/campgrounds">Go Back</a>
         </div>
     </div>
-</div>
 
 
 

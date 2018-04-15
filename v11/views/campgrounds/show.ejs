@@ -1,5 +1,4 @@
 <% include ../partials/header %>
-<div class="container">
     <div class="row">
         <div class="col-md-3">
             <p class="lead">TouristyChennai</p>
@@ -13,7 +12,7 @@
         <div class="thumbnail">
             <img class="img-responsive" src="<%=campground.image%>">
             <div class="caption-full">
-                <h4 class="pull-right">Rs.500/day</h4>
+                <h4 class="pull-right">Rs.<%=campground.price%>/day</h4>
                 <h4><a><%=campground.name%></a> </h4>
                 <p><%= campground.description %></p>
                 <p><em>Submitted By <%=campground.author.username %></em></p>
@@ -53,6 +52,5 @@
             </div>
         </div>
     </div>
-</div>
 
 <% include ../partials/footer %>

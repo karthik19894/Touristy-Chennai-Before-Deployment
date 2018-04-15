@@ -19,12 +19,14 @@ router.get('/',function(req,res){
 });
 
 
+
 router.post('/',middleware.isLoggedIn,function(req,res){
     var name=req.body.name;
+    var price=req.body.price;
     var image=req.body.image;
     var desc=req.body.description;
     var author={id:req.user._id,username:req.user.username}
-    var campground={name:name,image:image,description:desc,author:author};
+    var campground={name:name,price:price,image:image,description:desc,author:author};
     Campground.create(campground,function(err,campground)
     {
         if(err){

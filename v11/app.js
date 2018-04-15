@@ -18,7 +18,7 @@ campgroundRoutes=require('./routes/campgrounds'),
 commentRoutes=require('./routes/comments');
 
 
-mongoose.connect("mongodb://localhost/touristychennaiv3");
+mongoose.connect("mongodb://localhost/touristychennai");
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");

@@ -13,16 +13,15 @@ router.get('/',function(req,res){
 //Show the register form
 
 router.get('/register',function(req,res){
-    res.render('register');
+    res.render('register',{page:"register"});
 });
 
 router.post('/register',function(req,res){
     var newUser=new User({username:req.body.username});
     User.register(newUser,req.body.password,function(err,user){
         if(err){
-            req.flash("error",err.message);
             console.log(err);
-            return res.render('register');
+            return res.render('register',{error:err.message});
         }
         passport.authenticate("local")(req,res,function(err,user){
             res.redirect('/campgrounds');
@@ -34,7 +33,7 @@ router.post('/register',function(req,res){
 //show login form
 
 router.get('/login',function(req,res){
-    res.render('login');
+    res.render('login',{page:"login"});
 });
 
 //posting login
