@@ -18,9 +18,9 @@ var indexRoutes=require('./routes/index'),
 campgroundRoutes=require('./routes/campgrounds'),
 commentRoutes=require('./routes/comments');
 
-
+//"mongodb://karthik:password@ds135594.mlab.com:35594/touristychennai"
 // mongoose.connect("mongodb://localhost/touristychennai");
-mongoose.connect("mongodb://karthik:password@ds135594.mlab.com:35594/touristychennai");
+mongoose.connect(process.env.DATABASEURL);
 
 
 app.use(express.static(__dirname+'/public'));
